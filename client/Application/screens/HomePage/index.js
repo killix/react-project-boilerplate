@@ -6,7 +6,7 @@ export default React.createClass({
     return (
       <div style={{backgroundColor: "#FFF"}}>
         HomePage
-        <Slider transition={200} marker={}>
+        <Slider transition={200}>
           <img src="http://placehold.it/50x30"/>
           <img src="http://placehold.it/80x30"/>
           <img src="http://placehold.it/100x30"/>
