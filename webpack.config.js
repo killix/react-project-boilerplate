@@ -16,9 +16,9 @@ var WebPackConfig = module.exports = {
   },
 
   'output': {
-    'path': path.resolve('build/'),
-    'filename' : '[name].bundle.js',
-    'publicPath' : '/build/'
+    'path': path.resolve('public/'),
+    'filename' : '[name].bundled.js',
+    'publicPath' : '/public/'
   },
 
   'context': path.resolve( __dirname, 'client'),
