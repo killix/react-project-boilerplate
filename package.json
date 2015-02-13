@@ -4,7 +4,7 @@
   "description": "TalkProcess site",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot",
+    "dev": "NODE_ENV=development node dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "authors": [
@@ -16,6 +16,7 @@
     "6to5-runtime": "^3.5.3",
     "node-jsx": "^0.12.4",
     "react": "^0.12.2",
+    "react-a11y": "0.0.5",
     "react-router": "^0.11.6",
     "react-tools": "^0.12.2",
     "webpack": "^1.5.3"
