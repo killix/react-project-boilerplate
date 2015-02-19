@@ -1,13 +1,11 @@
 import React from 'react';
-import Slider from 'components/Carousel';
 
 export default React.createClass({
   render() {
     return (
-      <div>
-        Home Page!
-      </div>
+      <div>Sorry, the page you were looking for was not found!</div>
     );
   }
 });
 
+window.location.hash = "#/"

@@ -5,7 +5,7 @@ import { RouteHandler } from 'react-router';
 export default React.createClass({
   render() {
     return (
-      <div>
+      <div className="ApplicationRoot">
         <RouteHandler/>
       </div>
     );

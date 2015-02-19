@@ -5,14 +5,16 @@ import renderer from './config/renderer';
 import a11y from 'react-a11y';
 let router;
 
-router = function startUpRouter(routes) {
+function startUpRouter(routes) {
   let router = Router.create({
     routes: routes
   });
 
   router.run(renderer);
   return router;
-}(routes)
+}
+
+router = startUpRouter(routes);
 
 if (process.env.NODE_ENV === 'development') {
   a11y();

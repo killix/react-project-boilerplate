@@ -4,20 +4,16 @@
   "description": "A React Project Boilerplate",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development node dev-server",
+    "dev": "NODE_ENV=development gulp watch",
+    "build": "NODE_ENV=production gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Edygar de Lima Oliveira <edygardelima@gmail.com>",
   "license": "BSD",
   "dependencies": {
-    "react": "^0.12.2",
-    "react-router": "^0.11.6",
-    "6to5-runtime": "^3.5.3",
-    "node-jsx": "^0.12.4"
-  },
-  "devDependencies": {
-    "6to5-core": "^3.5.3",
-    "6to5-loader": "^3.0.0",
+    "babel-core": "^4.3.0",
+    "babel-loader": "^4.0.0",
+    "babel-runtime": "^4.3.0",
     "browser-sync": "^2.1.6",
     "bundle-loader": "^0.5.3",
     "css-loader": "^0.9.1",
@@ -31,11 +27,14 @@
     "gulp-util": "^3.0.3",
     "jeet": "^6.1.2",
     "nib": "^1.1.0",
+    "node-jsx": "^0.12.4",
+    "react": "^0.12.2",
     "react-a11y": "0.0.5",
     "react-hot-loader": "^1.1.4",
+    "react-router": "^0.11.6",
     "react-tools": "^0.12.2",
+    "rupture": "^0.6.1",
     "style-loader": "^0.8.3",
-    "stylus-loader": "^0.5.0",
     "webpack": "^1.5.3",
     "webpack-dev-server": "^1.7.0"
   }

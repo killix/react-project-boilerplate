@@ -18,10 +18,12 @@ gulp.task('browser-sync', function() {
   });
 });
 
+gulp.task('none', function(callback) {
+  callback();
+});
 gulp.task('watch', ['build', 'browser-sync'], function() {
-
   gulp.watch(['./client/**/*.{gif,png,jpg,jpeg,svg}'], ['images']);
-  gulp.watch(['./client/**/*.styl', '!./client/**/_*.styl'], ['styles']);
+  gulp.watch(['./client/**/*.styl', './client/**/_*.styl'], ['styles']);
   gulp.watch('./client/**/*.{html,xml,woff,eot,ttf}', ['assets']);
 
   var server = new WebpackDevServer(webpack(config), {
@@ -30,8 +32,9 @@ gulp.task('watch', ['build', 'browser-sync'], function() {
     hot: true
   })
   .listen(8888, '0.0.0.0', function (err, result) {
-    if (err) {
-      console.log(err);
-    }
+    if (err)
+      handleErrors(err);
+
+    gutil.log("[watch]", "Access http://localhost:8080/public/");
   });
 });

@@ -1,18 +1,19 @@
 var gulp = require('gulp');
 var stylus = require('gulp-stylus');
-var nib = require('nib');
-var jeet = require('jeet');
 var handleErrors = require('../util/handleErrors');
 var browserSync = require('browser-sync');
 
+var nib = require('nib');
+var jeet = require('jeet');
+var rupture = require('rupture');
+
 gulp.task('styles', function () {
   return gulp.src([
-      './client/**/*.styl',
-      '!./client/**/_*.styl'
+      './client/**/*.styl'
     ])
     .pipe(
       stylus({
-        use: [nib(), jeet()],
+        use: [nib(), jeet(), rupture()],
         import: 'nib',
 
         sourcemap: process.env.NODE_ENV === "production"? null: {

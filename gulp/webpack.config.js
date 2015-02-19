@@ -8,7 +8,7 @@ var WebPackConfig = module.exports = {
 
   module : {
     'loaders' : [
-      { 'test': /\.jsx?$/, loaders: [ '6to5-loader'], 'exclude': /node_modules/ },
+      { 'test': /\.jsx?$/, loaders: [ 'babel-loader'], 'exclude': /node_modules/ },
     ]
   },
 
@@ -18,10 +18,10 @@ var WebPackConfig = module.exports = {
     'publicPath' : '/public/'
   },
 
-  'context': path.resolve( __dirname, '../client/js'),
+  'context': path.resolve( __dirname, '../client'),
 
   'resolve': {
-    'modulesDirectories': ['shared', 'node_modules', 'client/js' ],
+    'modulesDirectories': ['shared', 'node_modules', 'client' ],
     'extensions': ['', '.jsx', '.js','.json']
   },
 
