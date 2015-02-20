@@ -1,4 +1,3 @@
-import React from 'react';
 import Router from 'react-router';
 import routes from './config/routes';
 import renderer from './config/renderer';
@@ -14,14 +13,13 @@ function startUpRouter(routes) {
   return router;
 }
 
-router = startUpRouter(routes);
-
 if (process.env.NODE_ENV === 'development') {
   a11y();
-
   module.hot.accept('./config/routes', function () {
     routes = require('./config/routes');
     router.teardown();
     router = startUpRouter(routes);
   });
 }
+
+router = startUpRouter(routes);

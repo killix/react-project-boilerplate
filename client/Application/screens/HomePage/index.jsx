@@ -1,10 +1,19 @@
 import React from 'react';
 
 export default React.createClass({
+  getInitialState() {
+    return {};
+  },
+
   render() {
+    let className = "";
+    if (this.state.isOn) {
+      className = "active";
+    }
+
     return (
       <div className="HomeContainer">
-        <div className="icon-box">
+        <div className={"icon-box "}>
           Lorem ipsum
         </div>
         <div className="icon-box">

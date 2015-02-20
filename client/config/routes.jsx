@@ -6,6 +6,10 @@ import App from 'Application';
 import HomePage from 'Application/screens/HomePage';
 import NotFoundPage from 'Application/screens/NotFoundPage';
 
+if (process.env.NODE_ENV === "development") {
+  require('./dev');
+}
+
 export default (
   <Route handler={App} path="/">
     <DefaultRoute name="home" handler={HomePage} />
