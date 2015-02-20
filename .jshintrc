@@ -1,6 +1,6 @@
 {
-  'es6': true,
-  'node': true,
-  'unused': true,
-  'undef': false
+  "esnext": true,
+  "node": true,
+  "unused": true,
+  "undef": true
 }
