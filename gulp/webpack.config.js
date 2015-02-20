@@ -1,7 +1,7 @@
-var Webpack = require('webpack');
+var webpack = require('webpack');
 var path = require('path');
 
-var WebPackConfig = module.exports = {
+module.exports = {
   'entry': {
     'index' : ['./index.js']
   },
@@ -13,7 +13,7 @@ var WebPackConfig = module.exports = {
   },
 
   'output': {
-    'path': path.resolve('../public/'),
+    'path': path.resolve(__dirname, '../public/'),
     'filename' : '[name].js',
     'publicPath' : '/public/'
   },
@@ -26,13 +26,13 @@ var WebPackConfig = module.exports = {
   },
 
   'plugins': [
-    new Webpack.optimize.UglifyJsPlugin(),
-    new Webpack.optimize.DedupePlugin(),
-    new Webpack.DefinePlugin({
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("production")
       }
     }),
-    new Webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin()
   ]
 };
