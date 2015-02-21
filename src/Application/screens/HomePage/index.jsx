@@ -2,18 +2,21 @@ import React from 'react';
 
 export default React.createClass({
   getInitialState() {
-    return {};
+    return {
+      isActive: false
+    };
+  },
+
+  onClick() {
+    this.setState({
+      isActive: !this.state.isActive
+    });
   },
 
   render() {
-    let className = "";
-    if (this.state.isOn) {
-      className = "active";
-    }
-
     return (
       <div className="HomeContainer">
-        <div className={"icon-box "}>
+        <div onClick={this.onClick} className={"icon-box "+ (!this.state.isActive || "active")}>
           Lorem ipsum
         </div>
         <div className="icon-box">

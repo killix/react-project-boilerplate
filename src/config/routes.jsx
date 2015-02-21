@@ -2,9 +2,9 @@ import React from 'react';
 import Router from 'react-router';
 const {DefaultRoute, Route, NotFoundRoute} = Router;
 
-import App from 'Application';
-import HomePage from 'Application/screens/HomePage';
-import NotFoundPage from 'Application/screens/NotFoundPage';
+import App from '../Application';
+import HomePage from '../Application/screens/HomePage';
+import NotFoundPage from '../Application/screens/NotFoundPage';
 
 if (process.env.NODE_ENV === "development") {
   require('./dev');

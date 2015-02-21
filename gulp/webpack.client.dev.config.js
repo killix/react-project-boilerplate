@@ -2,7 +2,7 @@ var Webpack = require('webpack');
 var path = require('path');
 var entries;
 var entriesKeys;
-var WebPackConfig = module.exports = require('./webpack.config');
+var WebPackConfig = module.exports = require('./webpack.client.config');
 
 entries = (WebPackConfig.entry || WebPackConfig.entries);
 

@@ -9,7 +9,7 @@ var rupture = require('rupture');
 
 gulp.task('styles', function () {
   return gulp.src([
-      './client/**/*.styl'
+      './src/**/*.styl'
     ])
     .pipe(
       stylus({

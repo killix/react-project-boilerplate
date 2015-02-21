@@ -1,6 +1,6 @@
 import Router from 'react-router';
 import routes from './config/routes';
-import renderer from './config/renderer';
+import renderer from './config/clientRenderer';
 import a11y from 'react-a11y';
 let router;
 

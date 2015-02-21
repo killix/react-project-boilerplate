@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
   'entry': {
-    'index' : ['./index.js']
+    'index' : ['./server.js']
   },
 
   module : {
@@ -13,17 +13,19 @@ module.exports = {
   },
 
   'output': {
-    'path': path.resolve(__dirname, '../public/'),
+    'path': path.resolve(__dirname, '../'),
     'filename' : '[name].js',
-    'publicPath' : '/public/'
+    'publicPath' : '/'
   },
 
-  'context': path.resolve( __dirname, '../client'),
+  'context': path.resolve( __dirname, '../src'),
 
   'resolve': {
-    'modulesDirectories': ['shared', 'node_modules', 'client' ],
-    'extensions': ['', '.jsx', '.js','.json']
+    'modulesDirectories': ['shared', 'node_modules' ],
+    'extensions': ['', '.jsx', '.js']
   },
+
+  'target': 'node',
 
   'plugins': [
     new webpack.optimize.UglifyJsPlugin(),
@@ -33,6 +35,6 @@ module.exports = {
         NODE_ENV: JSON.stringify("production")
       }
     }),
-    new webpack.NoErrorsPlugin()
+    new webpack.optimize.OccurenceOrderPlugin()
   ]
 };
