@@ -2,9 +2,9 @@ import React from 'react';
 import Router from 'react-router';
 const {DefaultRoute, Route, NotFoundRoute} = Router;
 
-import App from '../Application';
-import HomePage from '../Application/screens/HomePage';
-import NotFoundPage from '../Application/screens/NotFoundPage';
+import App from 'App';
+import Home from '../App/screens/Home';
+import NotFound from '../App/screens/NotFound';
 
 if (process.env.NODE_ENV === "development") {
   require('./dev');
@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "development") {
 
 export default (
   <Route handler={App} path="/">
-    <DefaultRoute name="home" handler={HomePage} />
-    <NotFoundRoute name="not-found" handler={NotFoundPage} />
+    <DefaultRoute name="home" handler={Home} />
+    <NotFoundRoute name="not-found" handler={NotFound} />
   </Route>
 );

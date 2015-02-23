@@ -3,38 +3,37 @@ var path = require('path');
 
 module.exports = {
   'entry': {
-    'index' : ['./server.js']
+    'index' : ['./server']
   },
 
   module : {
     'loaders' : [
       { 'test': /\.jsx?$/, loaders: [ 'babel-loader'], 'exclude': /node_modules/ },
+      { 'test': /\.json$/, loader: "json" }
     ]
   },
 
   'output': {
     'path': path.resolve(__dirname, '../'),
     'filename' : '[name].js',
-    'publicPath' : '/'
+    'pathinfo': true
   },
 
   'context': path.resolve( __dirname, '../src'),
 
   'resolve': {
-    'modulesDirectories': ['shared', 'node_modules' ],
-    'extensions': ['', '.jsx', '.js']
+    'modulesDirectories': ['shared', 'node_modules', 'src' ],
+    'extensions': ['', '.jsx', '.js','.json']
   },
 
-  'target': 'node',
-
   'plugins': [
-    new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.DedupePlugin(),
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("production")
-      }
-    }),
-    new webpack.optimize.OccurenceOrderPlugin()
-  ]
+    new webpack.NoErrorsPlugin()
+  ],
+
+  'target' : 'node',
+
+  'node': {
+    '__dirname': true
+  }
 };

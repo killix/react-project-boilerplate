@@ -2,5 +2,9 @@
   "esnext": true,
   "node": true,
   "unused": true,
-  "undef": true
+  "undef": true,
+  "predef" : [
+    "window"
+  ]
+
 }

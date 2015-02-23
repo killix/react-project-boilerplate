@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
   'entry': {
-    'index' : ['./client.js']
+    'index' : ['./client']
   },
 
   module : {
