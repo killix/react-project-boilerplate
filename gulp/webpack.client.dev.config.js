@@ -1,8 +1,10 @@
 var Webpack = require('webpack');
 var path = require('path');
+var devip = require("dev-ip");
 var entries;
 var entriesKeys;
 var WebPackConfig = module.exports = require('./webpack.client.config');
+var host = ((devip()||[]).shift() || "localhost");
 
 entries = (WebPackConfig.entry || WebPackConfig.entries);
 
@@ -20,7 +22,7 @@ if (typeof(entries) !== "string") {
       entries[key] = entries[key];
     }
     entries[key].unshift(
-      'webpack-dev-server/client?http://0.0.0.0:8888', // WebpackDevServer host and port
+      'webpack-dev-server/client?http://'+host+':8081', // WebpackDevServer host and port
       'webpack/hot/only-dev-server'
     );
   });

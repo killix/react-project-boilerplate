@@ -4,7 +4,7 @@ export default React.createClass({
   render() {
     return (
       <div className="AppHeader">
-        AppHeader !
+        App Header
       </div>
     );
   }

@@ -1,9 +1,10 @@
 var gulp = require('gulp');
 
 gulp.task('build', [
-  'images',
-  'styles',
+  'stylus',
   'assets',
+  'styles',
+  'images',
   'webpack-server',
   'webpack-client'
 ]);

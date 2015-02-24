@@ -9,7 +9,10 @@ gulp.task("webpack-server", function(callback) {
     if(err)
       return handleErrors(new gutil.PluginError("webpack", err));
 
-    gutil.log("[webpack-server]", stats.toString());
+    gutil.log("[webpack-server]", stats.toString({
+      colors: true
+    }));
+
     callback();
   });
 });

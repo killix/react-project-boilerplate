@@ -6,7 +6,7 @@ export default React.createClass({
     return (
       <div>
         <p>Sorry, the page you were looking for was not found!</p>
-        <p><Link to="home">Back to Home</Link></p>
+        <p><Link to="home" query={{ referer: "404"}}>Back to Home</Link></p>
       </div>
     );
   }

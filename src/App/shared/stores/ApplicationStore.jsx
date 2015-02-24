@@ -12,7 +12,6 @@ export default createStore({
     if (this.currentRoute && route.path === this.currentRoute.path) {
       return;
     }
-
     this.currentRoute = route;
     this.emitChange();
   },

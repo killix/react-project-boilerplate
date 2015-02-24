@@ -3,7 +3,7 @@ import navigateAction from '../App/shared/actions/navigate';
 
 
 let firstRender = true;
-let mountNode = window.document.body;
+let mountNode = window.document.getElementById('ReactRoot');
 const debug = require('debug')('RootLevel');
 
 export default function render(context, Handler, RouterState) {

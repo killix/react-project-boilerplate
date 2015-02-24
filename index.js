@@ -190,22 +190,6 @@
 	  displayName: "HtmlTemplate",
 
 	  render: function render() {
-	    var style = React.createElement("link", { rel: "stylesheet", href: "/public/app.css" });
-	    var script = undefined;
-
-	    if (process.env.NODE_ENV === "development") {
-	      style = [style, React.createElement(
-	        "script",
-	        { type: "text/javascript", id: "__bs_script__" },
-	        "var scriptUrl = \"http://localhost:8889/browser-sync/browser-sync-client.2.2.1.js\"; document.write('",
-	        React.createElement("script", { url: "'+scriptUrl+'" }),
-	        "');"
-	      )];
-	      script = React.createElement("script", { type: "text/javascript", src: "/public/index.js", defer: true });
-	    } else {
-	      script = React.createElement("script", { type: "text/javascript", src: "http://localhost:8888/public/index.js", defer: true });
-	    }
-
 	    return React.createElement(
 	      "html",
 	      null,
@@ -219,11 +203,15 @@
 	          this.props.title
 	        ),
 	        React.createElement("meta", { name: "viewport", content: "width=device-width, user-scalable=no" }),
-	        style
+	        React.createElement("link", { rel: "stylesheet", href: "/public/app.css" })
 	      ),
-	      React.createElement("body", { dangerouslySetInnerHTML: { __html: this.props.markup } }),
-	      React.createElement("script", { dangerouslySetInnerHTML: { __html: this.props.state } }),
-	      script
+	      React.createElement(
+	        "body",
+	        null,
+	        React.createElement("div", { id: "ReactRoot", dangerouslySetInnerHTML: { __html: this.props.markup } }),
+	        React.createElement("script", { dangerouslySetInnerHTML: { __html: this.props.state } }),
+	        React.createElement("script", { type: "text/javascript", src: "/public/index.js", defer: true })
+	      )
 	    );
 	  }
 	});
@@ -815,7 +803,6 @@
 	    if (this.currentRoute && route.path === this.currentRoute.path) {
 	      return;
 	    }
-
 	    this.currentRoute = route;
 	    this.emitChange();
 	  },
@@ -3328,7 +3315,7 @@
 	        null,
 	        React.createElement(
 	          Link,
-	          { to: "home" },
+	          { to: "home", query: { referer: "404" } },
 	          "Back to Home"
 	        )
 	      )
@@ -7199,9 +7186,9 @@
 
 	"use strict";
 
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 117);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 114);
 
-	var traverseAllChildren = __webpack_require__(/*! ./traverseAllChildren */ 118);
+	var traverseAllChildren = __webpack_require__(/*! ./traverseAllChildren */ 115);
 	var warning = __webpack_require__(/*! ./warning */ 86);
 
 	var twoArgumentPooler = PooledClass.twoArgumentPooler;
@@ -7355,12 +7342,12 @@
 	"use strict";
 
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 63);
-	var ReactOwner = __webpack_require__(/*! ./ReactOwner */ 114);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 115);
+	var ReactOwner = __webpack_require__(/*! ./ReactOwner */ 116);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 117);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
 	var invariant = __webpack_require__(/*! ./invariant */ 87);
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 116);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 118);
 
 	/**
 	 * Every React component is in one of these life cycles.
@@ -7810,17 +7797,17 @@
 	var ReactEmptyComponent = __webpack_require__(/*! ./ReactEmptyComponent */ 119);
 	var ReactErrorUtils = __webpack_require__(/*! ./ReactErrorUtils */ 120);
 	var ReactLegacyElement = __webpack_require__(/*! ./ReactLegacyElement */ 69);
-	var ReactOwner = __webpack_require__(/*! ./ReactOwner */ 114);
+	var ReactOwner = __webpack_require__(/*! ./ReactOwner */ 116);
 	var ReactPerf = __webpack_require__(/*! ./ReactPerf */ 72);
 	var ReactPropTransferer = __webpack_require__(/*! ./ReactPropTransferer */ 121);
 	var ReactPropTypeLocations = __webpack_require__(/*! ./ReactPropTypeLocations */ 122);
 	var ReactPropTypeLocationNames = __webpack_require__(/*! ./ReactPropTypeLocationNames */ 123);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 115);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 117);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
 	var instantiateReactComponent = __webpack_require__(/*! ./instantiateReactComponent */ 124);
 	var invariant = __webpack_require__(/*! ./invariant */ 87);
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 116);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 118);
 	var keyOf = __webpack_require__(/*! ./keyOf */ 125);
 	var monitorCodeUse = __webpack_require__(/*! ./monitorCodeUse */ 126);
 	var mapObject = __webpack_require__(/*! ./mapObject */ 127);
@@ -12532,7 +12519,7 @@
 	var ReactPropTypeLocationNames = __webpack_require__(/*! ./ReactPropTypeLocationNames */ 123);
 
 	var deprecated = __webpack_require__(/*! ./deprecated */ 77);
-	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 165);
+	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 163);
 
 	/**
 	 * Collection of methods that allow declaration and validation of props that are
@@ -12891,9 +12878,9 @@
 
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 63);
 	var ReactInstanceHandles = __webpack_require__(/*! ./ReactInstanceHandles */ 68);
-	var ReactMarkupChecksum = __webpack_require__(/*! ./ReactMarkupChecksum */ 163);
+	var ReactMarkupChecksum = __webpack_require__(/*! ./ReactMarkupChecksum */ 164);
 	var ReactServerRenderingTransaction =
-	  __webpack_require__(/*! ./ReactServerRenderingTransaction */ 164);
+	  __webpack_require__(/*! ./ReactServerRenderingTransaction */ 165);
 
 	var instantiateReactComponent = __webpack_require__(/*! ./instantiateReactComponent */ 124);
 	var invariant = __webpack_require__(/*! ./invariant */ 87);
@@ -13655,7 +13642,7 @@
 
 	"use strict";
 
-	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 165);
+	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 163);
 
 	/**
 	 * Similar to invariant but only logs a warning if the condition is not met.
@@ -14570,7 +14557,7 @@
 	    return React.createElement(
 	      "div",
 	      { className: "AppHeader" },
-	      "AppHeader !"
+	      "App Header"
 	    );
 	  }
 	});
@@ -16127,7 +16114,7 @@
 
 	"use strict";
 
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 116);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 118);
 
 	var PropagationPhases = keyMirror({bubbled: null, captured: null});
 
@@ -16188,6 +16175,315 @@
 
 /***/ },
 /* 114 */
+/*!*************************************!*\
+  !*** ../~/react/lib/PooledClass.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2014, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule PooledClass
+	 */
+
+	"use strict";
+
+	var invariant = __webpack_require__(/*! ./invariant */ 87);
+
+	/**
+	 * Static poolers. Several custom versions for each potential number of
+	 * arguments. A completely generic pooler is easy to implement, but would
+	 * require accessing the `arguments` object. In each of these, `this` refers to
+	 * the Class itself, not an instance. If any others are needed, simply add them
+	 * here, or in their own files.
+	 */
+	var oneArgumentPooler = function(copyFieldsFrom) {
+	  var Klass = this;
+	  if (Klass.instancePool.length) {
+	    var instance = Klass.instancePool.pop();
+	    Klass.call(instance, copyFieldsFrom);
+	    return instance;
+	  } else {
+	    return new Klass(copyFieldsFrom);
+	  }
+	};
+
+	var twoArgumentPooler = function(a1, a2) {
+	  var Klass = this;
+	  if (Klass.instancePool.length) {
+	    var instance = Klass.instancePool.pop();
+	    Klass.call(instance, a1, a2);
+	    return instance;
+	  } else {
+	    return new Klass(a1, a2);
+	  }
+	};
+
+	var threeArgumentPooler = function(a1, a2, a3) {
+	  var Klass = this;
+	  if (Klass.instancePool.length) {
+	    var instance = Klass.instancePool.pop();
+	    Klass.call(instance, a1, a2, a3);
+	    return instance;
+	  } else {
+	    return new Klass(a1, a2, a3);
+	  }
+	};
+
+	var fiveArgumentPooler = function(a1, a2, a3, a4, a5) {
+	  var Klass = this;
+	  if (Klass.instancePool.length) {
+	    var instance = Klass.instancePool.pop();
+	    Klass.call(instance, a1, a2, a3, a4, a5);
+	    return instance;
+	  } else {
+	    return new Klass(a1, a2, a3, a4, a5);
+	  }
+	};
+
+	var standardReleaser = function(instance) {
+	  var Klass = this;
+	  ("production" !== process.env.NODE_ENV ? invariant(
+	    instance instanceof Klass,
+	    'Trying to release an instance into a pool of a different type.'
+	  ) : invariant(instance instanceof Klass));
+	  if (instance.destructor) {
+	    instance.destructor();
+	  }
+	  if (Klass.instancePool.length < Klass.poolSize) {
+	    Klass.instancePool.push(instance);
+	  }
+	};
+
+	var DEFAULT_POOL_SIZE = 10;
+	var DEFAULT_POOLER = oneArgumentPooler;
+
+	/**
+	 * Augments `CopyConstructor` to be a poolable class, augmenting only the class
+	 * itself (statically) not adding any prototypical fields. Any CopyConstructor
+	 * you give this may have a `poolSize` property, and will look for a
+	 * prototypical `destructor` on instances (optional).
+	 *
+	 * @param {Function} CopyConstructor Constructor that can be used to reset.
+	 * @param {Function} pooler Customizable pooler.
+	 */
+	var addPoolingTo = function(CopyConstructor, pooler) {
+	  var NewKlass = CopyConstructor;
+	  NewKlass.instancePool = [];
+	  NewKlass.getPooled = pooler || DEFAULT_POOLER;
+	  if (!NewKlass.poolSize) {
+	    NewKlass.poolSize = DEFAULT_POOL_SIZE;
+	  }
+	  NewKlass.release = standardReleaser;
+	  return NewKlass;
+	};
+
+	var PooledClass = {
+	  addPoolingTo: addPoolingTo,
+	  oneArgumentPooler: oneArgumentPooler,
+	  twoArgumentPooler: twoArgumentPooler,
+	  threeArgumentPooler: threeArgumentPooler,
+	  fiveArgumentPooler: fiveArgumentPooler
+	};
+
+	module.exports = PooledClass;
+
+
+/***/ },
+/* 115 */
+/*!*********************************************!*\
+  !*** ../~/react/lib/traverseAllChildren.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2014, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule traverseAllChildren
+	 */
+
+	"use strict";
+
+	var ReactElement = __webpack_require__(/*! ./ReactElement */ 63);
+	var ReactInstanceHandles = __webpack_require__(/*! ./ReactInstanceHandles */ 68);
+
+	var invariant = __webpack_require__(/*! ./invariant */ 87);
+
+	var SEPARATOR = ReactInstanceHandles.SEPARATOR;
+	var SUBSEPARATOR = ':';
+
+	/**
+	 * TODO: Test that:
+	 * 1. `mapChildren` transforms strings and numbers into `ReactTextComponent`.
+	 * 2. it('should fail when supplied duplicate key', function() {
+	 * 3. That a single child and an array with one item have the same key pattern.
+	 * });
+	 */
+
+	var userProvidedKeyEscaperLookup = {
+	  '=': '=0',
+	  '.': '=1',
+	  ':': '=2'
+	};
+
+	var userProvidedKeyEscapeRegex = /[=.:]/g;
+
+	function userProvidedKeyEscaper(match) {
+	  return userProvidedKeyEscaperLookup[match];
+	}
+
+	/**
+	 * Generate a key string that identifies a component within a set.
+	 *
+	 * @param {*} component A component that could contain a manual key.
+	 * @param {number} index Index that is used if a manual key is not provided.
+	 * @return {string}
+	 */
+	function getComponentKey(component, index) {
+	  if (component && component.key != null) {
+	    // Explicit key
+	    return wrapUserProvidedKey(component.key);
+	  }
+	  // Implicit key determined by the index in the set
+	  return index.toString(36);
+	}
+
+	/**
+	 * Escape a component key so that it is safe to use in a reactid.
+	 *
+	 * @param {*} key Component key to be escaped.
+	 * @return {string} An escaped string.
+	 */
+	function escapeUserProvidedKey(text) {
+	  return ('' + text).replace(
+	    userProvidedKeyEscapeRegex,
+	    userProvidedKeyEscaper
+	  );
+	}
+
+	/**
+	 * Wrap a `key` value explicitly provided by the user to distinguish it from
+	 * implicitly-generated keys generated by a component's index in its parent.
+	 *
+	 * @param {string} key Value of a user-provided `key` attribute
+	 * @return {string}
+	 */
+	function wrapUserProvidedKey(key) {
+	  return '$' + escapeUserProvidedKey(key);
+	}
+
+	/**
+	 * @param {?*} children Children tree container.
+	 * @param {!string} nameSoFar Name of the key path so far.
+	 * @param {!number} indexSoFar Number of children encountered until this point.
+	 * @param {!function} callback Callback to invoke with each child found.
+	 * @param {?*} traverseContext Used to pass information throughout the traversal
+	 * process.
+	 * @return {!number} The number of children in this subtree.
+	 */
+	var traverseAllChildrenImpl =
+	  function(children, nameSoFar, indexSoFar, callback, traverseContext) {
+	    var nextName, nextIndex;
+	    var subtreeCount = 0;  // Count of children found in the current subtree.
+	    if (Array.isArray(children)) {
+	      for (var i = 0; i < children.length; i++) {
+	        var child = children[i];
+	        nextName = (
+	          nameSoFar +
+	          (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
+	          getComponentKey(child, i)
+	        );
+	        nextIndex = indexSoFar + subtreeCount;
+	        subtreeCount += traverseAllChildrenImpl(
+	          child,
+	          nextName,
+	          nextIndex,
+	          callback,
+	          traverseContext
+	        );
+	      }
+	    } else {
+	      var type = typeof children;
+	      var isOnlyChild = nameSoFar === '';
+	      // If it's the only child, treat the name as if it was wrapped in an array
+	      // so that it's consistent if the number of children grows
+	      var storageName =
+	        isOnlyChild ? SEPARATOR + getComponentKey(children, 0) : nameSoFar;
+	      if (children == null || type === 'boolean') {
+	        // All of the above are perceived as null.
+	        callback(traverseContext, null, storageName, indexSoFar);
+	        subtreeCount = 1;
+	      } else if (type === 'string' || type === 'number' ||
+	                 ReactElement.isValidElement(children)) {
+	        callback(traverseContext, children, storageName, indexSoFar);
+	        subtreeCount = 1;
+	      } else if (type === 'object') {
+	        ("production" !== process.env.NODE_ENV ? invariant(
+	          !children || children.nodeType !== 1,
+	          'traverseAllChildren(...): Encountered an invalid child; DOM ' +
+	          'elements are not valid children of React components.'
+	        ) : invariant(!children || children.nodeType !== 1));
+	        for (var key in children) {
+	          if (children.hasOwnProperty(key)) {
+	            nextName = (
+	              nameSoFar + (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
+	              wrapUserProvidedKey(key) + SUBSEPARATOR +
+	              getComponentKey(children[key], 0)
+	            );
+	            nextIndex = indexSoFar + subtreeCount;
+	            subtreeCount += traverseAllChildrenImpl(
+	              children[key],
+	              nextName,
+	              nextIndex,
+	              callback,
+	              traverseContext
+	            );
+	          }
+	        }
+	      }
+	    }
+	    return subtreeCount;
+	  };
+
+	/**
+	 * Traverses children that are typically specified as `props.children`, but
+	 * might also be specified through attributes:
+	 *
+	 * - `traverseAllChildren(this.props.children, ...)`
+	 * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
+	 *
+	 * The `traverseContext` is an optional argument that is passed through the
+	 * entire traversal. It can be used to store accumulations or anything else that
+	 * the callback might find relevant.
+	 *
+	 * @param {?*} children Children tree object.
+	 * @param {!function} callback To invoke upon traversing each child.
+	 * @param {?*} traverseContext Context for traversal.
+	 * @return {!number} The number of children in this subtree.
+	 */
+	function traverseAllChildren(children, callback, traverseContext) {
+	  if (children == null) {
+	    return 0;
+	  }
+
+	  return traverseAllChildrenImpl(children, '', 0, callback, traverseContext);
+	}
+
+	module.exports = traverseAllChildren;
+
+
+/***/ },
+/* 116 */
 /*!************************************!*\
   !*** ../~/react/lib/ReactOwner.js ***!
   \************************************/
@@ -16348,7 +16644,7 @@
 
 
 /***/ },
-/* 115 */
+/* 117 */
 /*!**************************************!*\
   !*** ../~/react/lib/ReactUpdates.js ***!
   \**************************************/
@@ -16368,7 +16664,7 @@
 	"use strict";
 
 	var CallbackQueue = __webpack_require__(/*! ./CallbackQueue */ 197);
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 117);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 114);
 	var ReactCurrentOwner = __webpack_require__(/*! ./ReactCurrentOwner */ 62);
 	var ReactPerf = __webpack_require__(/*! ./ReactPerf */ 72);
 	var Transaction = __webpack_require__(/*! ./Transaction */ 198);
@@ -16643,7 +16939,7 @@
 
 
 /***/ },
-/* 116 */
+/* 118 */
 /*!***********************************!*\
   !*** ../~/react/lib/keyMirror.js ***!
   \***********************************/
@@ -16700,315 +16996,6 @@
 	};
 
 	module.exports = keyMirror;
-
-
-/***/ },
-/* 117 */
-/*!*************************************!*\
-  !*** ../~/react/lib/PooledClass.js ***!
-  \*************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2014, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule PooledClass
-	 */
-
-	"use strict";
-
-	var invariant = __webpack_require__(/*! ./invariant */ 87);
-
-	/**
-	 * Static poolers. Several custom versions for each potential number of
-	 * arguments. A completely generic pooler is easy to implement, but would
-	 * require accessing the `arguments` object. In each of these, `this` refers to
-	 * the Class itself, not an instance. If any others are needed, simply add them
-	 * here, or in their own files.
-	 */
-	var oneArgumentPooler = function(copyFieldsFrom) {
-	  var Klass = this;
-	  if (Klass.instancePool.length) {
-	    var instance = Klass.instancePool.pop();
-	    Klass.call(instance, copyFieldsFrom);
-	    return instance;
-	  } else {
-	    return new Klass(copyFieldsFrom);
-	  }
-	};
-
-	var twoArgumentPooler = function(a1, a2) {
-	  var Klass = this;
-	  if (Klass.instancePool.length) {
-	    var instance = Klass.instancePool.pop();
-	    Klass.call(instance, a1, a2);
-	    return instance;
-	  } else {
-	    return new Klass(a1, a2);
-	  }
-	};
-
-	var threeArgumentPooler = function(a1, a2, a3) {
-	  var Klass = this;
-	  if (Klass.instancePool.length) {
-	    var instance = Klass.instancePool.pop();
-	    Klass.call(instance, a1, a2, a3);
-	    return instance;
-	  } else {
-	    return new Klass(a1, a2, a3);
-	  }
-	};
-
-	var fiveArgumentPooler = function(a1, a2, a3, a4, a5) {
-	  var Klass = this;
-	  if (Klass.instancePool.length) {
-	    var instance = Klass.instancePool.pop();
-	    Klass.call(instance, a1, a2, a3, a4, a5);
-	    return instance;
-	  } else {
-	    return new Klass(a1, a2, a3, a4, a5);
-	  }
-	};
-
-	var standardReleaser = function(instance) {
-	  var Klass = this;
-	  ("production" !== process.env.NODE_ENV ? invariant(
-	    instance instanceof Klass,
-	    'Trying to release an instance into a pool of a different type.'
-	  ) : invariant(instance instanceof Klass));
-	  if (instance.destructor) {
-	    instance.destructor();
-	  }
-	  if (Klass.instancePool.length < Klass.poolSize) {
-	    Klass.instancePool.push(instance);
-	  }
-	};
-
-	var DEFAULT_POOL_SIZE = 10;
-	var DEFAULT_POOLER = oneArgumentPooler;
-
-	/**
-	 * Augments `CopyConstructor` to be a poolable class, augmenting only the class
-	 * itself (statically) not adding any prototypical fields. Any CopyConstructor
-	 * you give this may have a `poolSize` property, and will look for a
-	 * prototypical `destructor` on instances (optional).
-	 *
-	 * @param {Function} CopyConstructor Constructor that can be used to reset.
-	 * @param {Function} pooler Customizable pooler.
-	 */
-	var addPoolingTo = function(CopyConstructor, pooler) {
-	  var NewKlass = CopyConstructor;
-	  NewKlass.instancePool = [];
-	  NewKlass.getPooled = pooler || DEFAULT_POOLER;
-	  if (!NewKlass.poolSize) {
-	    NewKlass.poolSize = DEFAULT_POOL_SIZE;
-	  }
-	  NewKlass.release = standardReleaser;
-	  return NewKlass;
-	};
-
-	var PooledClass = {
-	  addPoolingTo: addPoolingTo,
-	  oneArgumentPooler: oneArgumentPooler,
-	  twoArgumentPooler: twoArgumentPooler,
-	  threeArgumentPooler: threeArgumentPooler,
-	  fiveArgumentPooler: fiveArgumentPooler
-	};
-
-	module.exports = PooledClass;
-
-
-/***/ },
-/* 118 */
-/*!*********************************************!*\
-  !*** ../~/react/lib/traverseAllChildren.js ***!
-  \*********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2014, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule traverseAllChildren
-	 */
-
-	"use strict";
-
-	var ReactElement = __webpack_require__(/*! ./ReactElement */ 63);
-	var ReactInstanceHandles = __webpack_require__(/*! ./ReactInstanceHandles */ 68);
-
-	var invariant = __webpack_require__(/*! ./invariant */ 87);
-
-	var SEPARATOR = ReactInstanceHandles.SEPARATOR;
-	var SUBSEPARATOR = ':';
-
-	/**
-	 * TODO: Test that:
-	 * 1. `mapChildren` transforms strings and numbers into `ReactTextComponent`.
-	 * 2. it('should fail when supplied duplicate key', function() {
-	 * 3. That a single child and an array with one item have the same key pattern.
-	 * });
-	 */
-
-	var userProvidedKeyEscaperLookup = {
-	  '=': '=0',
-	  '.': '=1',
-	  ':': '=2'
-	};
-
-	var userProvidedKeyEscapeRegex = /[=.:]/g;
-
-	function userProvidedKeyEscaper(match) {
-	  return userProvidedKeyEscaperLookup[match];
-	}
-
-	/**
-	 * Generate a key string that identifies a component within a set.
-	 *
-	 * @param {*} component A component that could contain a manual key.
-	 * @param {number} index Index that is used if a manual key is not provided.
-	 * @return {string}
-	 */
-	function getComponentKey(component, index) {
-	  if (component && component.key != null) {
-	    // Explicit key
-	    return wrapUserProvidedKey(component.key);
-	  }
-	  // Implicit key determined by the index in the set
-	  return index.toString(36);
-	}
-
-	/**
-	 * Escape a component key so that it is safe to use in a reactid.
-	 *
-	 * @param {*} key Component key to be escaped.
-	 * @return {string} An escaped string.
-	 */
-	function escapeUserProvidedKey(text) {
-	  return ('' + text).replace(
-	    userProvidedKeyEscapeRegex,
-	    userProvidedKeyEscaper
-	  );
-	}
-
-	/**
-	 * Wrap a `key` value explicitly provided by the user to distinguish it from
-	 * implicitly-generated keys generated by a component's index in its parent.
-	 *
-	 * @param {string} key Value of a user-provided `key` attribute
-	 * @return {string}
-	 */
-	function wrapUserProvidedKey(key) {
-	  return '$' + escapeUserProvidedKey(key);
-	}
-
-	/**
-	 * @param {?*} children Children tree container.
-	 * @param {!string} nameSoFar Name of the key path so far.
-	 * @param {!number} indexSoFar Number of children encountered until this point.
-	 * @param {!function} callback Callback to invoke with each child found.
-	 * @param {?*} traverseContext Used to pass information throughout the traversal
-	 * process.
-	 * @return {!number} The number of children in this subtree.
-	 */
-	var traverseAllChildrenImpl =
-	  function(children, nameSoFar, indexSoFar, callback, traverseContext) {
-	    var nextName, nextIndex;
-	    var subtreeCount = 0;  // Count of children found in the current subtree.
-	    if (Array.isArray(children)) {
-	      for (var i = 0; i < children.length; i++) {
-	        var child = children[i];
-	        nextName = (
-	          nameSoFar +
-	          (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
-	          getComponentKey(child, i)
-	        );
-	        nextIndex = indexSoFar + subtreeCount;
-	        subtreeCount += traverseAllChildrenImpl(
-	          child,
-	          nextName,
-	          nextIndex,
-	          callback,
-	          traverseContext
-	        );
-	      }
-	    } else {
-	      var type = typeof children;
-	      var isOnlyChild = nameSoFar === '';
-	      // If it's the only child, treat the name as if it was wrapped in an array
-	      // so that it's consistent if the number of children grows
-	      var storageName =
-	        isOnlyChild ? SEPARATOR + getComponentKey(children, 0) : nameSoFar;
-	      if (children == null || type === 'boolean') {
-	        // All of the above are perceived as null.
-	        callback(traverseContext, null, storageName, indexSoFar);
-	        subtreeCount = 1;
-	      } else if (type === 'string' || type === 'number' ||
-	                 ReactElement.isValidElement(children)) {
-	        callback(traverseContext, children, storageName, indexSoFar);
-	        subtreeCount = 1;
-	      } else if (type === 'object') {
-	        ("production" !== process.env.NODE_ENV ? invariant(
-	          !children || children.nodeType !== 1,
-	          'traverseAllChildren(...): Encountered an invalid child; DOM ' +
-	          'elements are not valid children of React components.'
-	        ) : invariant(!children || children.nodeType !== 1));
-	        for (var key in children) {
-	          if (children.hasOwnProperty(key)) {
-	            nextName = (
-	              nameSoFar + (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
-	              wrapUserProvidedKey(key) + SUBSEPARATOR +
-	              getComponentKey(children[key], 0)
-	            );
-	            nextIndex = indexSoFar + subtreeCount;
-	            subtreeCount += traverseAllChildrenImpl(
-	              children[key],
-	              nextName,
-	              nextIndex,
-	              callback,
-	              traverseContext
-	            );
-	          }
-	        }
-	      }
-	    }
-	    return subtreeCount;
-	  };
-
-	/**
-	 * Traverses children that are typically specified as `props.children`, but
-	 * might also be specified through attributes:
-	 *
-	 * - `traverseAllChildren(this.props.children, ...)`
-	 * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
-	 *
-	 * The `traverseContext` is an optional argument that is passed through the
-	 * entire traversal. It can be used to store accumulations or anything else that
-	 * the callback might find relevant.
-	 *
-	 * @param {?*} children Children tree object.
-	 * @param {!function} callback To invoke upon traversing each child.
-	 * @param {?*} traverseContext Context for traversal.
-	 * @return {!number} The number of children in this subtree.
-	 */
-	function traverseAllChildren(children, callback, traverseContext) {
-	  if (children == null) {
-	    return 0;
-	  }
-
-	  return traverseAllChildrenImpl(children, '', 0, callback, traverseContext);
-	}
-
-	module.exports = traverseAllChildren;
 
 
 /***/ },
@@ -17153,7 +17140,7 @@
 	"use strict";
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
-	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 165);
+	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 163);
 	var invariant = __webpack_require__(/*! ./invariant */ 87);
 	var joinClasses = __webpack_require__(/*! ./joinClasses */ 199);
 	var warning = __webpack_require__(/*! ./warning */ 86);
@@ -17324,7 +17311,7 @@
 
 	"use strict";
 
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 116);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 118);
 
 	var ReactPropTypeLocations = keyMirror({
 	  prop: null,
@@ -18549,7 +18536,7 @@
 	var EventPluginHub = __webpack_require__(/*! ./EventPluginHub */ 205);
 	var EventPropagators = __webpack_require__(/*! ./EventPropagators */ 209);
 	var ExecutionEnvironment = __webpack_require__(/*! ./ExecutionEnvironment */ 79);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 115);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 117);
 	var SyntheticEvent = __webpack_require__(/*! ./SyntheticEvent */ 211);
 
 	var isEventSupported = __webpack_require__(/*! ./isEventSupported */ 132);
@@ -19628,7 +19615,7 @@
 
 	var EventConstants = __webpack_require__(/*! ./EventConstants */ 113);
 
-	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 165);
+	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 163);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -19693,7 +19680,7 @@
 	"use strict";
 
 	var ReactDOMIDOperations = __webpack_require__(/*! ./ReactDOMIDOperations */ 217);
-	var ReactMarkupChecksum = __webpack_require__(/*! ./ReactMarkupChecksum */ 163);
+	var ReactMarkupChecksum = __webpack_require__(/*! ./ReactMarkupChecksum */ 164);
 	var ReactMount = __webpack_require__(/*! ./ReactMount */ 70);
 	var ReactPerf = __webpack_require__(/*! ./ReactPerf */ 72);
 	var ReactReconcileTransaction = __webpack_require__(/*! ./ReactReconcileTransaction */ 218);
@@ -19817,11 +19804,11 @@
 
 	"use strict";
 
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 115);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 117);
 	var Transaction = __webpack_require__(/*! ./Transaction */ 198);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
-	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 165);
+	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 163);
 
 	var RESET_BATCHED_UPDATES = {
 	  initialize: emptyFunction,
@@ -19903,7 +19890,7 @@
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 63);
 	var ReactDOM = __webpack_require__(/*! ./ReactDOM */ 65);
 
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 116);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 118);
 
 	// Store a reference to the <button> `ReactDOMComponent`. TODO: use string
 	var button = ReactElement.createFactory(ReactDOM.button.type);
@@ -20089,7 +20076,7 @@
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 63);
 	var ReactDOM = __webpack_require__(/*! ./ReactDOM */ 65);
 	var ReactMount = __webpack_require__(/*! ./ReactMount */ 70);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 115);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 117);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
 	var invariant = __webpack_require__(/*! ./invariant */ 87);
@@ -20328,7 +20315,7 @@
 	var ReactCompositeComponent = __webpack_require__(/*! ./ReactCompositeComponent */ 60);
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 63);
 	var ReactDOM = __webpack_require__(/*! ./ReactDOM */ 65);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 115);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 117);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
 
@@ -20520,7 +20507,7 @@
 	var ReactCompositeComponent = __webpack_require__(/*! ./ReactCompositeComponent */ 60);
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 63);
 	var ReactDOM = __webpack_require__(/*! ./ReactDOM */ 65);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 115);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 117);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
 	var invariant = __webpack_require__(/*! ./invariant */ 87);
@@ -20662,10 +20649,10 @@
 
 	var EventListener = __webpack_require__(/*! ./EventListener */ 223);
 	var ExecutionEnvironment = __webpack_require__(/*! ./ExecutionEnvironment */ 79);
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 117);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 114);
 	var ReactInstanceHandles = __webpack_require__(/*! ./ReactInstanceHandles */ 68);
 	var ReactMount = __webpack_require__(/*! ./ReactMount */ 70);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 115);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 117);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
 	var getEventTarget = __webpack_require__(/*! ./getEventTarget */ 224);
@@ -20859,7 +20846,7 @@
 	var ReactNativeComponent = __webpack_require__(/*! ./ReactNativeComponent */ 200);
 	var ReactPerf = __webpack_require__(/*! ./ReactPerf */ 72);
 	var ReactRootIndex = __webpack_require__(/*! ./ReactRootIndex */ 158);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 115);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 117);
 
 	var ReactInjection = {
 	  Component: ReactComponent.injection,
@@ -22133,7 +22120,7 @@
 
 	"use strict";
 
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 116);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 118);
 
 	/**
 	 * When a component's children are updated, a series of update configuration
@@ -22175,7 +22162,7 @@
 
 	var ReactTextComponent = __webpack_require__(/*! ./ReactTextComponent */ 75);
 
-	var traverseAllChildren = __webpack_require__(/*! ./traverseAllChildren */ 118);
+	var traverseAllChildren = __webpack_require__(/*! ./traverseAllChildren */ 115);
 	var warning = __webpack_require__(/*! ./warning */ 86);
 
 	/**
@@ -22229,6 +22216,47 @@
 
 /***/ },
 /* 163 */
+/*!***************************************!*\
+  !*** ../~/react/lib/emptyFunction.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2014, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule emptyFunction
+	 */
+
+	function makeEmptyFunction(arg) {
+	  return function() {
+	    return arg;
+	  };
+	}
+
+	/**
+	 * This function accepts and discards inputs; it has no side effects. This is
+	 * primarily useful idiomatically for overridable function endpoints which
+	 * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+	 */
+	function emptyFunction() {}
+
+	emptyFunction.thatReturns = makeEmptyFunction;
+	emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+	emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+	emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+	emptyFunction.thatReturnsThis = function() { return this; };
+	emptyFunction.thatReturnsArgument = function(arg) { return arg; };
+
+	module.exports = emptyFunction;
+
+
+/***/ },
+/* 164 */
 /*!*********************************************!*\
   !*** ../~/react/lib/ReactMarkupChecksum.js ***!
   \*********************************************/
@@ -22247,7 +22275,7 @@
 
 	"use strict";
 
-	var adler32 = __webpack_require__(/*! ./adler32 */ 240);
+	var adler32 = __webpack_require__(/*! ./adler32 */ 239);
 
 	var ReactMarkupChecksum = {
 	  CHECKSUM_ATTR_NAME: 'data-react-checksum',
@@ -22283,7 +22311,7 @@
 
 
 /***/ },
-/* 164 */
+/* 165 */
 /*!*********************************************************!*\
   !*** ../~/react/lib/ReactServerRenderingTransaction.js ***!
   \*********************************************************/
@@ -22303,13 +22331,13 @@
 
 	"use strict";
 
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 117);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 114);
 	var CallbackQueue = __webpack_require__(/*! ./CallbackQueue */ 197);
-	var ReactPutListenerQueue = __webpack_require__(/*! ./ReactPutListenerQueue */ 239);
+	var ReactPutListenerQueue = __webpack_require__(/*! ./ReactPutListenerQueue */ 240);
 	var Transaction = __webpack_require__(/*! ./Transaction */ 198);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
-	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 165);
+	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 163);
 
 	/**
 	 * Provides a `CallbackQueue` queue for collecting `onDOMReady` callbacks
@@ -22400,47 +22428,6 @@
 	PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 	module.exports = ReactServerRenderingTransaction;
-
-
-/***/ },
-/* 165 */
-/*!***************************************!*\
-  !*** ../~/react/lib/emptyFunction.js ***!
-  \***************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2014, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule emptyFunction
-	 */
-
-	function makeEmptyFunction(arg) {
-	  return function() {
-	    return arg;
-	  };
-	}
-
-	/**
-	 * This function accepts and discards inputs; it has no side effects. This is
-	 * primarily useful idiomatically for overridable function endpoints which
-	 * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
-	 */
-	function emptyFunction() {}
-
-	emptyFunction.thatReturns = makeEmptyFunction;
-	emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-	emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-	emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-	emptyFunction.thatReturnsThis = function() { return this; };
-	emptyFunction.thatReturnsArgument = function(arg) { return arg; };
-
-	module.exports = emptyFunction;
 
 
 /***/ },
@@ -27381,7 +27368,7 @@
 
 	"use strict";
 
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 117);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 114);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
 	var invariant = __webpack_require__(/*! ./invariant */ 87);
@@ -29010,10 +28997,10 @@
 
 	"use strict";
 
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 117);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 114);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
-	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 165);
+	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 163);
 	var getEventTarget = __webpack_require__(/*! ./getEventTarget */ 224);
 
 	/**
@@ -29748,10 +29735,10 @@
 	"use strict";
 
 	var CallbackQueue = __webpack_require__(/*! ./CallbackQueue */ 197);
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 117);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 114);
 	var ReactBrowserEventEmitter = __webpack_require__(/*! ./ReactBrowserEventEmitter */ 131);
 	var ReactInputSelection = __webpack_require__(/*! ./ReactInputSelection */ 213);
-	var ReactPutListenerQueue = __webpack_require__(/*! ./ReactPutListenerQueue */ 239);
+	var ReactPutListenerQueue = __webpack_require__(/*! ./ReactPutListenerQueue */ 240);
 	var Transaction = __webpack_require__(/*! ./Transaction */ 198);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
@@ -30270,7 +30257,7 @@
 	 * @typechecks
 	 */
 
-	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 165);
+	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 163);
 
 	/**
 	 * Upstream version of event listener. Does not take into account specific
@@ -31283,6 +31270,47 @@
 
 /***/ },
 /* 239 */
+/*!*********************************!*\
+  !*** ../~/react/lib/adler32.js ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2014, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule adler32
+	 */
+
+	/* jslint bitwise:true */
+
+	"use strict";
+
+	var MOD = 65521;
+
+	// This is a clean-room implementation of adler32 designed for detecting
+	// if markup is not what we expect it to be. It does not need to be
+	// cryptographically strong, only reasonably good at detecting if markup
+	// generated on the server is different than that on the client.
+	function adler32(data) {
+	  var a = 1;
+	  var b = 0;
+	  for (var i = 0; i < data.length; i++) {
+	    a = (a + data.charCodeAt(i)) % MOD;
+	    b = (b + a) % MOD;
+	  }
+	  return a | (b << 16);
+	}
+
+	module.exports = adler32;
+
+
+/***/ },
+/* 240 */
 /*!***********************************************!*\
   !*** ../~/react/lib/ReactPutListenerQueue.js ***!
   \***********************************************/
@@ -31301,7 +31329,7 @@
 
 	"use strict";
 
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 117);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 114);
 	var ReactBrowserEventEmitter = __webpack_require__(/*! ./ReactBrowserEventEmitter */ 131);
 
 	var assign = __webpack_require__(/*! ./Object.assign */ 76);
@@ -31342,47 +31370,6 @@
 	PooledClass.addPoolingTo(ReactPutListenerQueue);
 
 	module.exports = ReactPutListenerQueue;
-
-
-/***/ },
-/* 240 */
-/*!*********************************!*\
-  !*** ../~/react/lib/adler32.js ***!
-  \*********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2014, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule adler32
-	 */
-
-	/* jslint bitwise:true */
-
-	"use strict";
-
-	var MOD = 65521;
-
-	// This is a clean-room implementation of adler32 designed for detecting
-	// if markup is not what we expect it to be. It does not need to be
-	// cryptographically strong, only reasonably good at detecting if markup
-	// generated on the server is different than that on the client.
-	function adler32(data) {
-	  var a = 1;
-	  var b = 0;
-	  for (var i = 0; i < data.length; i++) {
-	    a = (a + data.charCodeAt(i)) % MOD;
-	    b = (b + a) % MOD;
-	  }
-	  return a | (b << 16);
-	}
-
-	module.exports = adler32;
 
 
 /***/ },
@@ -36607,7 +36594,7 @@
 	var ExecutionEnvironment = __webpack_require__(/*! ./ExecutionEnvironment */ 79);
 
 	var createNodesFromMarkup = __webpack_require__(/*! ./createNodesFromMarkup */ 305);
-	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 165);
+	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 163);
 	var getMarkupWrap = __webpack_require__(/*! ./getMarkupWrap */ 306);
 	var invariant = __webpack_require__(/*! ./invariant */ 87);
 
