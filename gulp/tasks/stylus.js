@@ -6,7 +6,7 @@ var nib = require('nib');
 var jeet = require('jeet');
 var rupture = require('rupture');
 
-gulp.task('stylus', ['sprite'], function () {
+gulp.task('stylus', ['sprites'], function () {
   return gulp.src([
       './src/**/*.styl',
       '!./src/**/_*.styl'

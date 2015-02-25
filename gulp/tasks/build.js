@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 
 gulp.task('build', [
+  'cleanup',
   'stylus',
   'assets',
   'styles',
