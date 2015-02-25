@@ -1,5 +1,6 @@
 var changed = require('gulp-changed');
 var gulp = require('gulp');
+var handleErrors = require('../util/handleErrors');
 
 gulp.task('assets', function() {
   return gulp.src([
@@ -8,6 +9,7 @@ gulp.task('assets', function() {
     './src/**/*.{gif,png,jpg,jpeg,svg}',
     './src/{vendor,vendors}/**/*.json'
   ])
+  .on('error', handleErrors)
   .pipe(changed('./public'))
   .pipe(gulp.dest('./public'));
 });

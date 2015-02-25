@@ -1,3 +1,3 @@
 var gulp = require('gulp');
 
-gulp.task('watch', ['watch-assets', 'watch-client', 'watch-server', 'watch-styles']);
+gulp.task('watch', ['watch-client', 'watch-server', 'watch-styles', 'watch-assets']);

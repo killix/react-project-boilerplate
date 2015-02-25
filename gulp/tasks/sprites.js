@@ -3,6 +3,7 @@ var spritesmith = require('gulp.spritesmith');
 var glob = require('glob');
 var path = require("path");
 var merge = require("merge-stream");
+var handleErrors = require('../util/handleErrors');
 
 gulp.task('sprites', function() {
   return merge(glob.sync('./src/**/sprite*/')
@@ -19,8 +20,10 @@ gulp.task('sprites', function() {
     var spriteStream = gulp.src(spriteDir+"/**/*.*")
     .pipe(spritesmith({
       imgName: 'sprite'+spriteName+'.png',
+      imgPath: 'images/sprite'+spriteName+'.png',
       cssName: '_sprite'+spriteName+'.styl',
-    }));
+    }))
+    .on('error', handleErrors);
 
     spriteStream.img.pipe(gulp.dest('./public/images/'));
     spriteStream.css.pipe(gulp.dest('./src/'));
