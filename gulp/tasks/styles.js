@@ -4,7 +4,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var handleErrors = require('../util/handleErrors');
 var browserSync = require('browser-sync');
 
-gulp.task('styles', function () {
+gulp.task('styles', ['stylus','assets'], function () {
   return gulp.src('./public/**/*.css')
   .on('error', handleErrors)
   .pipe(autoprefixer({

@@ -2,3 +2,4 @@ node_modules
 ./src/_sprite.styl
 public/**
 .DS_Store
+index.js

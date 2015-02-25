@@ -5,8 +5,8 @@ var path = require("path");
 var merge = require("merge-stream");
 var handleErrors = require('../util/handleErrors');
 
-gulp.task('sprites', function() {
-  return merge(glob.sync('./src/**/sprite*/')
+gulp.task('sprites', function(cb) {
+  var spritesStream = glob.sync('./src/**/sprite*/')
   .map(function(spriteDir) {
     var spriteName = spriteDir
       .substr(path.resolve( __dirname, '../..'))
@@ -29,5 +29,10 @@ gulp.task('sprites', function() {
     spriteStream.css.pipe(gulp.dest('./src/'));
 
     return spriteStream;
-  }));
+  });
+
+  if (spritesStream)
+    return merge(spritesStream);
+  else
+    setTimeout(cb);
 });
