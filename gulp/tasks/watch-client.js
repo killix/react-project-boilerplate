@@ -1,11 +1,12 @@
 var gulp = require('gulp');
-var gutil = require('gulp-util');
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('../webpack.client.dev.config');
-var handleErrors = require('../util/handleErrors');
 
 gulp.task('watch-client', ['webpack-client'], function() {
+  var gutil = require('gulp-util');
+  var webpack = require('webpack');
+  var WebpackDevServer = require('webpack-dev-server');
+  var config = require('../webpack.client.dev.config');
+  var handleErrors = require('../util/handleErrors');
+
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     contentBase: {

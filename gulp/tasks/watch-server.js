@@ -1,8 +1,9 @@
 var gulp = require('gulp');
-var handleErrors = require('../util/handleErrors');
-var nodemon = require('gulp-nodemon');
 
 gulp.task('watch-server', ['webpack-server'], function() {
+  var handleErrors = require('../util/handleErrors');
+  var nodemon = require('gulp-nodemon');
+
   nodemon({
     script: 'index.js',
     ext: 'js jsx',

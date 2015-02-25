@@ -1,6 +1,6 @@
 var gulp = require('gulp');
-var del = require('del');
 
 gulp.task('cleanup', function (cb) {
+  var del = require('del');
   del(['./public/**'], cb);
 });

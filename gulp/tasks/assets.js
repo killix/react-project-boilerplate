@@ -1,8 +1,9 @@
-var changed = require('gulp-changed');
 var gulp = require('gulp');
-var handleErrors = require('../util/handleErrors');
 
 gulp.task('assets', function() {
+  var changed = require('gulp-changed');
+  var handleErrors = require('../util/handleErrors');
+
   return gulp.src([
     '!./src/**/sprite*/**/*.*',
     './src/**/*.{html,css,xml,woff,eot,ttf}',

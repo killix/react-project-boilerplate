@@ -1,11 +1,12 @@
 var gulp = require('gulp');
-var spritesmith = require('gulp.spritesmith');
-var glob = require('glob');
-var path = require("path");
-var merge = require("merge-stream");
-var handleErrors = require('../util/handleErrors');
 
 gulp.task('sprites', function(cb) {
+  var spritesmith = require('gulp.spritesmith');
+  var glob = require('glob');
+  var path = require("path");
+  var merge = require("merge-stream");
+  var handleErrors = require('../util/handleErrors');
+
   var spritesStream = glob.sync('./src/**/sprite*/')
   .map(function(spriteDir) {
     var spriteName = spriteDir

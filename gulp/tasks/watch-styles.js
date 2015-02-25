@@ -1,7 +1,8 @@
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
 
 gulp.task('watch-styles', function() {
+  var browserSync = require('browser-sync');
+
   gulp.watch([
     './src/**/sprite/**/*.{gif,png,jpg,jpeg,svg}',
     './src/**/*.styl',
