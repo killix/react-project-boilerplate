@@ -2,6 +2,9 @@ import React from 'react';
 import {Link} from 'react-router';
 
 export default React.createClass({
+  statics: {
+    title: "404 | Page Not Found"
+  },
   render() {
     return (
       <div>

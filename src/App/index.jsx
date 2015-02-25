@@ -11,7 +11,8 @@ export default React.createClass({
   mixins: [Fluxible.Mixin],
 
   statics: {
-    storeListeners: [ApplicationStore]
+    storeListeners: [ApplicationStore],
+    title: "Application Name"
   },
 
   getInitialState() {
@@ -21,6 +22,14 @@ export default React.createClass({
   onChange() {
     var state = this.getStore(ApplicationStore).getState();
     this.setState(state);
+  },
+
+  componentDidMount() {
+    window.document.title = this.state.title;
+  },
+
+  componentDidUpdate() {
+    window.document.title = this.state.title;
   },
 
   render() {

@@ -1,4 +1,6 @@
 import createStore from 'fluxible/utils/createStore';
+import isFunction from "lodash.isfunction";
+
 
 export default createStore({
   storeName: 'ApplicationStore',
@@ -6,24 +8,36 @@ export default createStore({
     'CHANGE_ROUTE': 'handleNavigate'
   },
   initialize: function () {
-    this.currentRoute = null;
+    this.title = 'Talk Process';
   },
-  handleNavigate: function (route) {
-    if (this.currentRoute && route.path === this.currentRoute.path) {
+  handleNavigate: function (routeCmd) {
+    let newTitle = routeCmd.routes.reduce(function(title, route) {
+      let slice = route.handler.title || route.title;
+      if (isFunction(slice))
+        slice = slice(route);
+
+      slice = slice || "";
+      if (!title)
+        return slice;
+
+      return slice + " | " + title;
+    }, "");
+
+    if (this.title === newTitle)
       return;
-    }
-    this.currentRoute = route;
+
+    this.title = newTitle;
     this.emitChange();
   },
   getState: function () {
     return {
-      route: this.currentRoute
+      title: this.title
     };
   },
   dehydrate: function () {
     return this.getState();
   },
   rehydrate: function (state) {
-    this.currentRoute = state.route;
+    this.title = state.title;
   }
 });

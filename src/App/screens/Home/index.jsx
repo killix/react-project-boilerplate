@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default React.createClass({
+  statics: {
+    title: "Home Page Title"
+  },
   render() {
     return (
       <div className="HomeContainer">
