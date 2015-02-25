@@ -14,6 +14,7 @@ gulp.task('watch-styles', function() {
     host: "0.0.0.0",
     // debounceDelay: 20,
     port: 8082,
+    logLevel: false,
     proxy: {
       target: 'localhost:8081'
     }
